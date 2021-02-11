@@ -1,0 +1,24 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.30'
+    id 'info.solidsoft.pitest' version '1.5.1'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation "junit:junit:4.13.1"
+}
+
+pitest {
+    targetClasses = ['test.*']  //by default "${project.group}.*"
+    pitestVersion = '1.4.1' //not needed when a default PIT version should be used
+    threads = 4
+    outputFormats = ['HTML']//'XML'
+    timestampedReports = false
+}
